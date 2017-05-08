@@ -7,7 +7,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define BATCHSIZE 1000000
+#define BATCHSIZE 100000
 
 int main( int argc, char *argv[] )
 {

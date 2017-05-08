@@ -6,13 +6,14 @@
 
 
 int main(int argc, char** argv) {
-    int i,j;
-    long int N=100000000,in=0;
+    int i,j,n=0;
+    long int N=1000000,in=0;
     double PI = 3.141592653589793238462643,pi;
     double x,y,d;
+    int inpts[4];
     
     // Initialize the MPI environment
-    MPI_Init(NULL, NULL);
+    MPI_Init(&argc, &argv);
 
     // Get the number of processes
     int world_size;
@@ -46,10 +47,22 @@ int main(int argc, char** argv) {
     
     }
     
+    inpts[n] = in;
+    n++;
+    
+    
+    //ierr = MPI_Comm_rank(MPI_COMM_WORLD, &im_id);
+    //ierr = MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
+
+      printf("I'm process %i out of %i processes\n", 
+         world_rank, world_size);
+         
+      printf("[%d, %d, %d, %d]",inpts[0],inpts[1],inpts[2],inpts[3]);
+
+    
     // Calculate PI and print out the approximation and the error
     pi = 4.0*(double)in/N;
     printf("Pi approximation is: %f Error: %f\n",pi,PI-pi );
-    
     
     MPI_Finalize();
     return 0;
